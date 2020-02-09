@@ -9,6 +9,9 @@ public class BasicBullet : MonoBehaviour
 
     void OnCollisionEnter (Collision other)
     {
-        // do damage
+        var health = other.gameObject.GetComponent<NonPlayerHealth>();
+        health?.Damage(Damage);
+
+        Destroy(gameObject);
     }
 }
