@@ -1,0 +1,45 @@
+FIXME:
+follow cam has hard limit on how fast it can go, means player stays offscreen when fast enough
+not convinced that right click to look behind actually works
+
+TODO:
+give bullets a life timer
+
+completely redo mouselook it sucks
+
+find asset for player character
+	cutesy spaceman, like a Kerbal
+
+indicate current velocity off of player
+
+add enemies
+	probably as sub units of planets
+	at least
+		pusher
+		heat hurter
+
+resource UI
+
+additional planets
+	gas giant - mostly hydrogen
+	ice giant - mostly methane
+	terrestrial planet - mostly silicon
+	variants on neutrinos
+
+actual game loop
+	player gets resource requirements
+	spawns in at origin with ship
+	plays level, mines resources, tries to not die
+	goes back to ship, tries to dock, and if successful wins the level
+	mayyyybe, if there's time to balance additional weapons, give the player a choice of weapon to pick after beating a level, and then repeat from the top	
+	otherwise just stick with one level
+
+fix color language:
+	find an outliner shader/material for 3D objects
+	good things are black with a red outline
+	bad things are red with a black outline
+	UI is also red with a black outline
+
+better "braking" system. maybe add a drag when you're under a certain speed
+
+if there's time add a 3D map view
