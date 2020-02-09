@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c5dfbb63188431b8ab7e91057d9377, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 0
+  Damage: 5
   Rigidbody: {fileID: 5920969629768825925}
 --- !u!54 &5920969629768825925
 Rigidbody:

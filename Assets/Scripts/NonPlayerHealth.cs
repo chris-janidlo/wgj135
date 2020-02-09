@@ -1,22 +1,29 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Collider))]
 public class NonPlayerHealth : MonoBehaviour
 {
-    public float Value { get; private set; }
-    
-    public float InitialValue;
+    public event Action Died;
 
-    void Start ()
+    [SerializeField]
+    float _value;
+    public float Value
     {
-        Value = InitialValue;
+        get => _value;
+        set => _value = value;
     }
 
     public void Damage (float amount)
     {
         Value -= amount;
 
-        if (amount <= 0) Destroy(gameObject);
+        if (Value <= 0)
+        {
+            Destroy(gameObject);
+            Died?.Invoke();
+        }
     }
 }

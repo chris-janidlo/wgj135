@@ -9,7 +9,6 @@ public class IndicatorArrow : MonoBehaviour
     public Vector2 TextOffset;
     public Vector2Int CanvasDimensions;
 
-    public Player Player;
     public Transform TextParent;
 
     public Text FillText, LabelText;
@@ -71,7 +70,7 @@ public class IndicatorArrow : MonoBehaviour
 
     void setTexts ()
     {
-        int distance = (int) Vector3.Distance(targetVisual.transform.position, Player.transform.position);
+        int distance = (int) Vector3.Distance(targetVisual.transform.position, Player.Instance.transform.position);
         string text = title + "\n" + distance + "M";
 
         FillText.text = text;

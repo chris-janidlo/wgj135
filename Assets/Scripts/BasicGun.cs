@@ -9,8 +9,6 @@ public class BasicGun : MonoBehaviour
     public float FiringForceMagnitude, HeatPerShot, TimePerShot;
     public string FireButton, SwitchDirectionButton;
 
-    public Player Player;
-
     void Start ()
     {
         StartCoroutine(shootine());
@@ -34,9 +32,9 @@ public class BasicGun : MonoBehaviour
                 BasicBullet bullet = Instantiate(BulletPrefab, transform.position, Quaternion.Euler(firingForce));
 
                 bullet.Rigidbody.AddForce(firingForce, ForceMode.VelocityChange);
-                Player.Movement.Rigidbody.AddForce(-firingForce, ForceMode.VelocityChange);
+                Player.Instance.Movement.Rigidbody.AddForce(-firingForce, ForceMode.VelocityChange);
 
-                Player.Heat.CurrentValue -= HeatPerShot;
+                Player.Instance.Resources.Heat -= HeatPerShot;
 
                 yield return new WaitForSeconds(TimePerShot);
             }

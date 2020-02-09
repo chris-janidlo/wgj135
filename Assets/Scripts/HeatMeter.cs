@@ -5,8 +5,6 @@ using UnityEngine.UI;
 
 public class HeatMeter : MonoBehaviour
 {
-    public Player Player;
-
     public AnimationCurve HeatToTopLabelAlpha, HeatToBottomLableAlpha;
 
     public CanvasGroup TopLabel, BottomLabel;
@@ -14,9 +12,9 @@ public class HeatMeter : MonoBehaviour
 
     void Update ()
     {
-        Bar.fillAmount = Player.Heat.NormalizedValue;
+        Bar.fillAmount = Player.Instance.NormalizedHeat;
 
-        float heat = Player.Heat.CurrentValue;
+        float heat = Player.Instance.Resources.Heat;
 
         TopLabel.alpha = HeatToTopLabelAlpha.Evaluate(heat);
         BottomLabel.alpha = HeatToBottomLableAlpha.Evaluate(heat);

@@ -1,9 +1,54 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using crass;
 
-public class Player : MonoBehaviour
+[RequireComponent(typeof(Collider))]
+public class Player : Singleton<Player>
 {
+    public ResourceBag Resources;
+
+    public float NormalizedHeat => (Resources.Heat - HeatMin) / (HeatMax - HeatMin);
+
+    public float HeatMin, HeatMax;
+    public float IdleLifeSupportDrainPerSecond;
+    public float DeathGracePeriodSeconds;
+
     public PlayerMovement Movement;
-    public PlayerHeat Heat;
+
+    IEnumerator deathEnum;
+
+    void Awake ()
+    {
+        SingletonSetInstance(this, true);
+    }
+
+    void Update ()
+    {
+        if (Resources.Heat == HeatMin)
+        {
+            if (deathEnum == null)
+            {
+                deathEnum = deathRoutine();
+                StartCoroutine(deathEnum);
+            }
+        }
+        else if (deathEnum != null)
+        {
+            StopCoroutine(deathEnum);
+            deathEnum = null;
+        }
+
+        Resources.Heat -= IdleLifeSupportDrainPerSecond * Time.deltaTime;
+    }
+
+    IEnumerator deathRoutine ()
+    {
+        yield return new WaitForSeconds(DeathGracePeriodSeconds);
+        while (true)
+        {
+            Debug.Log("GAME OVER");
+            yield return null;
+        }
+    }
 }

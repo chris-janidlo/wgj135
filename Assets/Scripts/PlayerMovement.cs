@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float Force;
+    public float MinimumVelocity;
     public float MovementHeatCostPerSecond;
     
     public string InputAxisX, InputAxisY, InputAxisZ;
 
     public Rigidbody Rigidbody;
-    public PlayerHeat Heat;
 
     Vector3 inputDir;
+    bool inputting;
 
     void Update ()
     {
@@ -23,14 +24,21 @@ public class PlayerMovement : MonoBehaviour
             Input.GetAxis(InputAxisZ)
         ).normalized;
 
-        if (inputDir != Vector3.zero)
+        inputting = inputDir != Vector3.zero;
+
+        if (inputting)
         {
-            Heat.CurrentValue -= MovementHeatCostPerSecond * Time.deltaTime;
+            Player.Instance.Resources.Heat -= MovementHeatCostPerSecond * Time.deltaTime;
         }
     }
 
     void FixedUpdate ()
     {
         Rigidbody.AddRelativeForce(inputDir * Force, ForceMode.Acceleration);
+
+        if (!inputting && Rigidbody.velocity.magnitude < MinimumVelocity)
+        {
+            Rigidbody.velocity = Vector3.zero;
+        }
     }
 }
