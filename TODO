@@ -5,12 +5,8 @@ not convinced that right click to look behind actually works
 TODO:
 give bullets a life timer
 
-completely redo mouselook it sucks
-
 find asset for player character
 	cutesy spaceman, like a Kerbal
-
-indicate current velocity off of player
 
 add enemies
 	probably as sub units of planets
@@ -39,7 +35,5 @@ fix color language:
 	good things are black with a red outline
 	bad things are red with a black outline
 	UI is also red with a black outline
-
-better "braking" system. maybe add a drag when you're under a certain speed
 
 if there's time add a 3D map view
