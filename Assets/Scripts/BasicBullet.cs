@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class BasicBullet : MonoBehaviour
 {
-    public float Damage;
+    public float Damage, LifeTime;
+
+    public Collider Collider;
     public Rigidbody Rigidbody;
+
+    IEnumerator Start ()
+    {
+        yield return new WaitForSeconds(LifeTime);
+        stop();
+    }
 
     void OnCollisionEnter (Collision other)
     {
         var health = other.gameObject.GetComponent<NonPlayerHealth>();
         health?.Damage(Damage);
 
-        Destroy(gameObject);
+        stop();
+    }
+
+    void stop ()
+    {
+        Destroy(Rigidbody);
+        Destroy(Collider);
     }
 }
