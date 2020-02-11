@@ -61,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void Knockback (Vector3 force)
     {
-        Rigidbody.AddRelativeForce(force, ForceMode.VelocityChange);
+        Rigidbody.AddForce(force, ForceMode.VelocityChange);
         knockbackTimer = KnockbackNonDecelTime;
     }
 
