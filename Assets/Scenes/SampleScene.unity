@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExtraBodiesToSpawnRange: {x: 0, y: 3}
-  DistanceFromOriginRange: {x: 100, y: 1000}
+  DistanceFromOriginRange: {x: 700, y: 1500}
   GuaranteedBodyPrefabs:
     Items:
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
