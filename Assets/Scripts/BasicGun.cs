@@ -32,7 +32,7 @@ public class BasicGun : MonoBehaviour
                 BasicBullet bullet = Instantiate(BulletPrefab, transform.position, Quaternion.Euler(firingForce));
 
                 bullet.Rigidbody.AddForce(firingForce, ForceMode.VelocityChange);
-                Player.Instance.Movement.Rigidbody.AddForce(-firingForce, ForceMode.VelocityChange);
+                Player.Instance.Movement.Knockback(-firingForce);
 
                 Player.Instance.Resources.Heat -= HeatPerShot;
 

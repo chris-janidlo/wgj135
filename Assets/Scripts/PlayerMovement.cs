@@ -10,15 +10,18 @@ public class PlayerMovement : MonoBehaviour
     public float ThrustHeatCostPerSecond;
 
     public EasingFunction.Ease DecelerationEase;
+    public float KnockbackNonDecelTime;
 
     public string MovementAxisX, MovementAxisY, MovementAxisZ, PitchAxis, YawAxis;
 
-    public Rigidbody Rigidbody;
+    [SerializeField]
+    Rigidbody Rigidbody;
     
     TransitionableVector3 decelerationTransition = new TransitionableVector3();
 
     Vector3 translationalInput;
     Vector2 rotationalInput;
+    float knockbackTimer;
 
     void Start ()
     {
@@ -39,12 +42,20 @@ public class PlayerMovement : MonoBehaviour
             Input.GetAxis(PitchAxis),
             Input.GetAxis(YawAxis)
         );
+
+        knockbackTimer -= Time.deltaTime;
     }
 
     void FixedUpdate ()
     {
         rotate();
         translate();
+    }
+
+    public void Knockback (Vector3 force)
+    {
+        Rigidbody.AddRelativeForce(force, ForceMode.VelocityChange);
+        knockbackTimer = KnockbackNonDecelTime;
     }
 
     void rotate ()
@@ -62,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody.AddRelativeForce(Vector3.Scale(translationalInput, Thrust), ForceMode.Acceleration);
             decelerationTransition.Value = Rigidbody.velocity;
         }
-        else
+        else if (knockbackTimer <= 0)
         {
             if (!decelerationTransition.IsTransitioningTo(Vector3.zero))
             {

@@ -1076,6 +1076,7 @@ MonoBehaviour:
   Thrust: {x: 6.5, y: 6.5, z: 5}
   ThrustHeatCostPerSecond: 0.4
   DecelerationEase: 1
+  KnockbackNonDecelTime: 2
   MovementAxisX: Movement X
   MovementAxisY: Movement Y
   MovementAxisZ: Movement Z
