@@ -3,9 +3,6 @@ follow cam has hard limit on how fast it can go, means player stays offscreen wh
 not convinced that right click to look behind actually works
 
 TODO:
-find asset for player character
-	cutesy spaceman, like a Kerbal
-
 add enemies
 	probably as sub units of planets
 	at least

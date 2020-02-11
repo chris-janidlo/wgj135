@@ -1021,8 +1021,8 @@ GameObject:
   - component: {fileID: 1347743669}
   - component: {fileID: 1347743668}
   - component: {fileID: 1347743667}
-  - component: {fileID: 1347743666}
   - component: {fileID: 1347743665}
+  - component: {fileID: 1347743666}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -1046,8 +1046,8 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 2
---- !u!65 &1347743666
-BoxCollider:
+--- !u!136 &1347743666
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1056,9 +1056,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.76
+  m_Height: 2.5
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.17, z: 1.13}
 --- !u!114 &1347743667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1789,7 +1790,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667575174}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8547471881871753710, guid: 6e32eef2be7db4c8fb2a7f965ff83937, type: 3}
 --- !u!4 &1667575178
 Transform:
   m_ObjectHideFlags: 0
