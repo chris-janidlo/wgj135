@@ -1,44 +1,84 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using crass;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float Force;
-    public float MinimumVelocity;
-    public float MovementHeatCostPerSecond;
-    
-    public string InputAxisX, InputAxisY, InputAxisZ;
+    public float MaxSpeed, TurnSpeed;
+    public Vector3 Thrust;
+    public float ThrustHeatCostPerSecond;
+
+    public EasingFunction.Ease DecelerationEase;
+
+    public string MovementAxisX, MovementAxisY, MovementAxisZ, PitchAxis, YawAxis;
 
     public Rigidbody Rigidbody;
+    
+    TransitionableVector3 decelerationTransition = new TransitionableVector3();
 
-    Vector3 inputDir;
-    bool inputting;
+    Vector3 translationalInput;
+    Vector2 rotationalInput;
+
+    void Start ()
+    {
+        decelerationTransition.AttachMonoBehaviour(this);
+    }
 
     void Update ()
     {
-        inputDir = new Vector3
+        translationalInput = new Vector3
         (
-            Input.GetAxis(InputAxisX),
-            Input.GetAxis(InputAxisY),
-            Input.GetAxis(InputAxisZ)
-        ).normalized;
+            Input.GetAxis(MovementAxisX),
+            Input.GetAxis(MovementAxisY),
+            Input.GetAxis(MovementAxisZ)
+        );
 
-        inputting = inputDir != Vector3.zero;
-
-        if (inputting)
-        {
-            Player.Instance.Resources.Heat -= MovementHeatCostPerSecond * Time.deltaTime;
-        }
+        rotationalInput = new Vector2
+        (
+            Input.GetAxis(PitchAxis),
+            Input.GetAxis(YawAxis)
+        );
     }
 
     void FixedUpdate ()
     {
-        Rigidbody.AddRelativeForce(inputDir * Force, ForceMode.Acceleration);
+        rotate();
+        translate();
+    }
 
-        if (!inputting && Rigidbody.velocity.magnitude < MinimumVelocity)
+    void rotate ()
+    {
+		transform.localRotation *= Quaternion.AngleAxis(rotationalInput.y * TurnSpeed, Vector3.up);
+		transform.localRotation *= Quaternion.AngleAxis(rotationalInput.x * TurnSpeed, Vector3.right);
+    }
+
+    void translate ()
+    {
+        float currentSpeed = Rigidbody.velocity.magnitude;
+
+        if (translationalInput != Vector3.zero)
         {
-            Rigidbody.velocity = Vector3.zero;
+            Rigidbody.AddRelativeForce(Vector3.Scale(translationalInput, Thrust), ForceMode.Acceleration);
+            decelerationTransition.Value = Rigidbody.velocity;
         }
+        else
+        {
+            if (!decelerationTransition.IsTransitioningTo(Vector3.zero))
+            {
+                float maxThrust = Mathf.Max(Thrust.x, Mathf.Max(Thrust.y, Thrust.z));
+                // assuming the player took the fastest route to get to the current speed, this means that it takes exactly as many seconds to slow down as it did to speed up
+                float decelTime = (currentSpeed / maxThrust);
+                decelerationTransition.StartTransitionToIfNotAlreadyStarted(Vector3.zero, decelTime, DecelerationEase);
+            }
+
+            Rigidbody.velocity = decelerationTransition.Value;
+        }
+
+        if (currentSpeed > MaxSpeed)
+            Rigidbody.velocity = Rigidbody.velocity.normalized * MaxSpeed;
+
+        if (Rigidbody.velocity != Vector3.zero)
+            Player.Instance.Resources.Heat -= ThrustHeatCostPerSecond * Time.deltaTime;
     }
 }
