@@ -21,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 translationalInput;
     Vector2 rotationalInput;
+
     float knockbackTimer;
+    bool cruiseControl;
 
     void Start ()
     {
@@ -52,6 +54,11 @@ public class PlayerMovement : MonoBehaviour
         translate();
     }
 
+    void OnGUI ()
+    {
+        cruiseControl = Event.current.capsLock;
+    }
+
     public void Knockback (Vector3 force)
     {
         Rigidbody.AddRelativeForce(force, ForceMode.VelocityChange);
@@ -73,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             Rigidbody.AddRelativeForce(Vector3.Scale(translationalInput, Thrust), ForceMode.Acceleration);
             decelerationTransition.Value = Rigidbody.velocity;
         }
-        else if (knockbackTimer <= 0)
+        else if (knockbackTimer <= 0 && !cruiseControl)
         {
             if (!decelerationTransition.IsTransitioningTo(Vector3.zero))
             {
@@ -84,6 +91,10 @@ public class PlayerMovement : MonoBehaviour
             }
 
             Rigidbody.velocity = decelerationTransition.Value;
+        }
+        else
+        {
+            decelerationTransition.StopTransitioning();
         }
 
         if (currentSpeed > MaxSpeed)
