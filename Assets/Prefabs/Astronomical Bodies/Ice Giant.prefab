@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce5a19a5babe4d16ac5c6ddd6ee0dda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RendererToIndicate: {fileID: 5936667323457879398}
+  ObjectToIndicate: {fileID: 715635848650671751}
   Title: Ice Giant
 --- !u!33 &5255639764209194651
 MeshFilter:

@@ -18,7 +18,7 @@ public class IndicatorArrow : MonoBehaviour
 
     public CanvasGroup OverallGroup;
 
-    public Renderer targetVisual;
+    Transform targetVisual;
     string title;
 
     Vector2 half = new Vector2(0.5f, 0.5f);
@@ -31,7 +31,7 @@ public class IndicatorArrow : MonoBehaviour
         setTexts();
     }
 
-    public void Initialize (Renderer targetVisual, string title)
+    public void Initialize (Transform targetVisual, string title)
     {
         this.targetVisual = targetVisual;
         this.title = title;
@@ -39,7 +39,7 @@ public class IndicatorArrow : MonoBehaviour
 
     void setPositions ()
     {
-        Vector3 cameraViewportPoint = CameraCache.Main.WorldToViewportPoint(targetVisual.transform.position);
+        Vector3 cameraViewportPoint = CameraCache.Main.WorldToViewportPoint(targetVisual.position);
         Vector2 viewportPosition = cameraViewportPoint;
         Vector2 arrowDirection;
 
@@ -79,7 +79,7 @@ public class IndicatorArrow : MonoBehaviour
 
     void setTexts ()
     {
-        int distance = (int) Vector3.Distance(targetVisual.transform.position, Player.Instance.transform.position);
+        int distance = (int) Vector3.Distance(targetVisual.position, Player.Instance.transform.position);
         string text = title + "\n" + distance + "M";
 
         FillText.text = text;

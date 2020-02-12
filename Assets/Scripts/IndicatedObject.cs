@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class IndicatedObject : MonoBehaviour
 {
-    public Renderer RendererToIndicate;
+    public Transform ObjectToIndicate;
     public string Title;
 
     IndicatorArrow arrow;
 
     void Start ()
     {
-        arrow = IndicatorArrowFactory.Instance.SpawnArrow(RendererToIndicate, Title);
+        arrow = IndicatorArrowFactory.Instance.SpawnArrow(ObjectToIndicate, Title);
     }
 
     void OnDestroy ()

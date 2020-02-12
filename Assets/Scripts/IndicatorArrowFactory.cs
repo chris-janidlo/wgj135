@@ -12,7 +12,7 @@ public class IndicatorArrowFactory : Singleton<IndicatorArrowFactory>
         SingletonSetInstance(this, true);
     }
 
-    public IndicatorArrow SpawnArrow (Renderer targetVisual, string title)
+    public IndicatorArrow SpawnArrow (Transform targetVisual, string title)
     {
         var arrow = Instantiate(IndicatorArrowPrefab, transform);
         arrow.Initialize(targetVisual, title);
