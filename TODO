@@ -1,16 +1,19 @@
 FIXME:
 
 TODO:
-actual game loop
-	player gets resource requirements
-	spawns in at origin with ship
-	plays level, mines resources, tries to not die
-	goes back to ship, tries to dock, and if successful wins the level
-	mayyyybe, if there's time to balance additional weapons, give the player a choice of weapon to pick after beating a level, and then repeat from the top	
-	otherwise just stick with one level
+move controls
+	up down to qe
+	shoot to space
 
 add stationary enemy encounter
 	single cylindrical man that spawns little drones
 	spawns drones at certain rate per second up until he hits a maximum drone count
 	or spawns drones at same rate if player gets too close
 	drones orbit player and deal heat damage on contact
+
+game menuing
+	polished gameover/victory screens
+	main menu
+	pause menu
+
+speed/cruise control UI

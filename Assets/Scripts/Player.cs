@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using crass;
 
 [RequireComponent(typeof(Collider))]
@@ -13,6 +14,7 @@ public class Player : Singleton<Player>
     public float HeatMin, HeatMax;
     public float IdleLifeSupportDrainPerSecond;
     public float DeathGracePeriodSeconds;
+    public string GameoverScene;
 
     public PlayerMovement Movement;
 
@@ -25,6 +27,8 @@ public class Player : Singleton<Player>
 
     void Update ()
     {
+        Resources.Heat = Mathf.Clamp(Resources.Heat, HeatMin, HeatMax);
+
         if (Resources.Heat == HeatMin)
         {
             if (deathEnum == null)
@@ -45,10 +49,6 @@ public class Player : Singleton<Player>
     IEnumerator deathRoutine ()
     {
         yield return new WaitForSeconds(DeathGracePeriodSeconds);
-        while (true)
-        {
-            Debug.Log("GAME OVER");
-            yield return null;
-        }
+        SceneManager.LoadScene(GameoverScene);
     }
 }
