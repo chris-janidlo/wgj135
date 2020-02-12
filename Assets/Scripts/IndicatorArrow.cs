@@ -40,6 +40,9 @@ public class IndicatorArrow : MonoBehaviour
         // clamp to screen if outside
         if (cameraViewportPoint.z < 0 || viewportPosition.x < 0 || viewportPosition.x > 1 || viewportPosition.y < 0 || viewportPosition.y > 1)
         {
+            // if the object is behind us, we need to do extra rotation to see it. flipping the viewportPosition perfectly simulates that extra rotation
+            if (cameraViewportPoint.z < 0) viewportPosition *= -1;
+
             // map from [0,1] to [-1,1] so we can compare absolute values below
             viewportPosition = (viewportPosition - half) * 2;
 
