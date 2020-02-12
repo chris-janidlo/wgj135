@@ -278,6 +278,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4234986390929623991}
   - component: {fileID: 4234986390929623988}
+  - component: {fileID: 4733072684758630976}
   m_Layer: 5
   m_Name: Indicator Arrow
   m_TagString: Untagged
@@ -320,9 +321,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TextOffset: {x: 40, y: 30}
   CanvasDimensions: {x: 256, y: 240}
-  Player: {fileID: 0}
   TextParent: {fileID: 4234986390335357616}
   FillText: {fileID: 4234986390266869943}
   LabelText: {fileID: 4234986390723864012}
   Arrow: {fileID: 4234986390141355473}
+  OverallGroup: {fileID: 4733072684758630976}
   targetVisual: {fileID: 0}
+--- !u!225 &4733072684758630976
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4234986390929623990}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0

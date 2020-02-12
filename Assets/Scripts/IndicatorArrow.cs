@@ -6,6 +6,8 @@ using crass;
 
 public class IndicatorArrow : MonoBehaviour
 {
+    public static bool ShowArrows = true;
+
     public Vector2 TextOffset;
     public Vector2Int CanvasDimensions;
 
@@ -14,6 +16,8 @@ public class IndicatorArrow : MonoBehaviour
     public Text FillText, LabelText;
     public Image Arrow;
 
+    public CanvasGroup OverallGroup;
+
     public Renderer targetVisual;
     string title;
 
@@ -21,6 +25,8 @@ public class IndicatorArrow : MonoBehaviour
 
     void Update ()
     {
+        OverallGroup.alpha = ShowArrows ? 1 : 0;
+
         setPositions();
         setTexts();
     }

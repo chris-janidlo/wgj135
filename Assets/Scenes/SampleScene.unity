@@ -1190,6 +1190,7 @@ GameObject:
   - component: {fileID: 1347743669}
   - component: {fileID: 1347743668}
   - component: {fileID: 1347743667}
+  - component: {fileID: 1347743670}
   - component: {fileID: 1347743665}
   - component: {fileID: 1347743666}
   m_Layer: 8
@@ -1292,6 +1293,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1347743670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347743664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f2aff990af5464493667879e6d689a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Button: Toggle Arrows
 --- !u!1 &1421450671
 GameObject:
   m_ObjectHideFlags: 0
