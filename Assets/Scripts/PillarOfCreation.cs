@@ -7,6 +7,9 @@ using crass;
 // astronomical body factory
 public class PillarOfCreation : MonoBehaviour
 {
+    // please don't modify the internal values of this from anywhere except this class :)))
+    public ResourceBag Goals { get; private set; }
+
     public Vector2Int ExtraBodiesToSpawnRange;
     public Vector2 DistanceFromOriginRange;
 
@@ -16,21 +19,35 @@ public class PillarOfCreation : MonoBehaviour
 
     void Start ()
     {
+        ResourceBag potentialGoals = new ResourceBag(0, 0, 0, 0);
+
         for (int i = 0; i < GuaranteedBodyPrefabs.Items.Count; i++)
         {
-            spawnAstronomicalBody(GuaranteedBodyPrefabs);
+            var spawned = spawnAstronomicalBody(GuaranteedBodyPrefabs);
+
+            potentialGoals += spawned.ResourceProfile;
         }
 
         for (int i = 0; i < RandomExtra.Range(ExtraBodiesToSpawnRange); i++)
         {
-            spawnAstronomicalBody(ExtraBodyPrefabs);
+            var spawned = spawnAstronomicalBody(ExtraBodyPrefabs);
+
+            potentialGoals += spawned.ResourceProfile;
         }
+
+        Goals = new ResourceBag
+        (
+            0,
+            UnityEngine.Random.Range(potentialGoals.Hydrogen / 2, potentialGoals.Hydrogen),
+            UnityEngine.Random.Range(potentialGoals.Methane / 2, potentialGoals.Methane),
+            UnityEngine.Random.Range(potentialGoals.Silicon / 2, potentialGoals.Silicon)
+        );
     }
 
-    void spawnAstronomicalBody (AstronomicalBodyBag bag)
+    AstronomicalBody spawnAstronomicalBody (AstronomicalBodyBag bag)
     {
-        var next = bag.GetNext();
-        var body = Instantiate(next, findUnoccupiedPosition(next.MinDistanceFromOtherColliders), UnityEngine.Random.rotation, AstronomicalBodyParent);
+        AstronomicalBody next = bag.GetNext();
+        return Instantiate(next, findUnoccupiedPosition(next.MinDistanceFromOtherColliders), UnityEngine.Random.rotation, AstronomicalBodyParent);
     }
 
     public Vector3 findUnoccupiedPosition (float minDistance)
