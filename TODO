@@ -4,12 +4,6 @@ TODO:
 add universal toggle for indicator arrows
 	or even better only show non-enemy indicators when player is at like 1 velocity or lower
 
-fix color language:
-	find an outliner shader/material for 3D objects
-	good things are black with a red outline
-	bad things are red with a black outline
-	UI is also red with a black outline
-
 resource UI
 
 additional planets
