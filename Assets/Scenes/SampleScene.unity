@@ -346,18 +346,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814003b18f9c44301a264f854e76753e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExtraBodiesToSpawnRange: {x: 0, y: 3}
-  DistanceFromOriginRange: {x: 700, y: 1500}
+  ExtraBodiesToSpawnRange: {x: 7, y: 9}
+  DistanceFromOriginRange: {x: 1500, y: 3000}
   GuaranteedBodyPrefabs:
     Items:
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
+    - {fileID: 1889405632089722533, guid: a894352a3e1214fdf946f6af30bdcf31, type: 3}
+    - {fileID: 1889405632089722533, guid: 1271abfa212e14c6cad4e6021a61c168, type: 3}
+    - {fileID: 1889405632089722533, guid: 3138aab76d79648519a98648f5dda4c7, type: 3}
     AvoidRepeats: 0
   ExtraBodyPrefabs:
     Items:
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
+    - {fileID: 1889405632089722533, guid: 3138aab76d79648519a98648f5dda4c7, type: 3}
+    - {fileID: 1889405632089722533, guid: 3138aab76d79648519a98648f5dda4c7, type: 3}
+    - {fileID: 1889405632089722533, guid: 3138aab76d79648519a98648f5dda4c7, type: 3}
+    - {fileID: 1889405632089722533, guid: 1271abfa212e14c6cad4e6021a61c168, type: 3}
+    - {fileID: 1889405632089722533, guid: 1271abfa212e14c6cad4e6021a61c168, type: 3}
+    - {fileID: 1889405632089722533, guid: a894352a3e1214fdf946f6af30bdcf31, type: 3}
     AvoidRepeats: 0
   AstronomicalBodyParent: {fileID: 138630531}
 --- !u!4 &138630531
@@ -1563,7 +1572,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 4000
   field of view: 60
   orthographic: 0
   orthographic size: 5

@@ -1,12 +1,6 @@
 FIXME:
 
 TODO:
-additional planets
-	gas giant - mostly hydrogen
-	ice giant - mostly methane
-	terrestrial planet - mostly silicon
-	variants on neutrinos
-
 actual game loop
 	player gets resource requirements
 	spawns in at origin with ship

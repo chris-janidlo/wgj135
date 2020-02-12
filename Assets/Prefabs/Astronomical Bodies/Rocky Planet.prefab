@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5936667323457879398}
   - component: {fileID: 2485270728603419093}
   m_Layer: 0
-  m_Name: Neutrino
+  m_Name: Rocky Planet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,12 +48,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84747cfd4e10459585076fe020931ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDistanceFromOtherColliders: 300
+  MinDistanceFromOtherColliders: 500
   ResourceProfile:
-    Heat: 50
-    Hydrogen: 10
+    Heat: 0
+    Hydrogen: 0
     Methane: 10
-    Silicon: 10
+    Silicon: 60
   ParticleExplosiveForceRange: {x: 5, y: 8}
   Health: {fileID: 817576950358478325}
   ParticlePrefab: {fileID: 2089067391280947251, guid: e4ec58b072342487ba5f1a2ae6e4fbce,
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644cb3686241049b5b484a562162369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 5
+  _value: 15
 --- !u!114 &121385109881433351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RendererToIndicate: {fileID: 5936667323457879398}
-  Title: Neutrino
+  Title: Rocky Planet
 --- !u!33 &5255639764209194651
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -110,7 +110,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 652519c559c4542bfb7db476fde172d7, type: 2}
+  - {fileID: 2100000, guid: 22c562c10397946b4864b78c2145e37c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
