@@ -1,10 +1,6 @@
 FIXME:
 
 TODO:
-move controls
-	up down to qe
-	shoot to space
-
 add stationary enemy encounter
 	single cylindrical man that spawns little drones
 	spawns drones at certain rate per second up until he hits a maximum drone count

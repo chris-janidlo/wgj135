@@ -6165,9 +6165,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e014d03dc747e4f7f91ae85194e64ed8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 26
+  MaxSpeed: 52
   TurnSpeed: 2
-  Thrust: {x: 6.5, y: 6.5, z: 5}
+  Thrust: {x: 26, y: 26, z: 20}
   ThrustHeatCostPerSecond: 0.4
   DecelerationEase: 1
   KnockbackNonDecelTime: 2
