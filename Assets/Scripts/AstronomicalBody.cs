@@ -21,6 +21,8 @@ public class AstronomicalBody : MonoBehaviour
 
     void die ()
     {
+        Destroy(gameObject);
+
         foreach (ResourceType type in EnumUtil.AllValues<ResourceType>())
         {
             for (int i = 0; i < ResourceProfile[type]; i++)
