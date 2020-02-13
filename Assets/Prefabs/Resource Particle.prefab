@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttractionDelay: 2
-  AttractionTime: 0.3
+  AttractionTime: 0.1
   Rigidbody: {fileID: 2054165212520497421}
 --- !u!54 &2054165212520497421
 Rigidbody:
