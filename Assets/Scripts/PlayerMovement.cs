@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public float MaxSpeed, TurnSpeed;
     public Vector3 Thrust;
-    public float ThrustHeatCostPerSecond;
+    public float MaxThrustHeatCostPerSecond;
 
     public EasingFunction.Ease DecelerationEase;
     public float KnockbackNonDecelTime;
@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     Vector3 translationalInput;
     Vector2 rotationalInput;
-
-    Vector3 oldVelocity;
 
     float knockbackTimer;
     bool cruiseControl;
@@ -102,9 +100,7 @@ public class PlayerMovement : MonoBehaviour
         if (currentSpeed > MaxSpeed)
             Rigidbody.velocity = Rigidbody.velocity.normalized * MaxSpeed;
 
-        if (decelerationTransition.IsTransitioningTo(Vector3.zero) || (translationalInput != Vector3.zero && Rigidbody.velocity != oldVelocity))
-            Player.Instance.Resources.Heat -= ThrustHeatCostPerSecond * Time.deltaTime;
-
-        oldVelocity = Rigidbody.velocity;
+        float scaledThrustHeatCost = MaxThrustHeatCostPerSecond * currentSpeed / MaxSpeed;
+        Player.Instance.Resources.Heat -= scaledThrustHeatCost * Time.deltaTime;
     }
 }

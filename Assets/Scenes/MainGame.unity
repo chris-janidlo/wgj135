@@ -6245,7 +6245,7 @@ MonoBehaviour:
   MaxSpeed: 52
   TurnSpeed: 2
   Thrust: {x: 26, y: 26, z: 20}
-  ThrustHeatCostPerSecond: 0.4
+  MaxThrustHeatCostPerSecond: 0.4
   DecelerationEase: 1
   KnockbackNonDecelTime: 2
   MovementAxisX: Movement X
