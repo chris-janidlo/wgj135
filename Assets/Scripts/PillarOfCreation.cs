@@ -11,7 +11,7 @@ public class PillarOfCreation : MonoBehaviour
     public ResourceBag Goals { get; private set; }
 
     public Vector2Int ExtraBodiesToSpawnRange;
-    public Vector2 DistanceFromOriginRange;
+    public Vector2 DistanceFromSpawnRange;
 
     public AstronomicalBodyBag GuaranteedBodyPrefabs, ExtraBodyPrefabs;
 
@@ -56,7 +56,7 @@ public class PillarOfCreation : MonoBehaviour
         
         do
         {
-            position = UnityEngine.Random.onUnitSphere * RandomExtra.Range(DistanceFromOriginRange);
+            position = transform.position + UnityEngine.Random.onUnitSphere * RandomExtra.Range(DistanceFromSpawnRange);
         } while (Physics.CheckSphere(position, minDistance));
 
         return position;

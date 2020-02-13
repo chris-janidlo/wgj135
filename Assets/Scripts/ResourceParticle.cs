@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(Collider))]
 public class ResourceParticle : MonoBehaviour
 {
-    public float PlayerMoveTime;
+    public float AttractionDelay, AttractionTime;
     public Rigidbody Rigidbody;
+
+    float attractionTimer;
 
     Transform target;
     ResourceType resourceType;
@@ -17,17 +19,27 @@ public class ResourceParticle : MonoBehaviour
     {
         this.target = target;
         this.resourceType = resourceType;
+
+        attractionTimer = AttractionDelay;
+    }
+
+    void Update ()
+    {
+        attractionTimer -= Time.deltaTime;
     }
 
     void FixedUpdate ()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, target.position, ref smoothDampVelocity, PlayerMoveTime);
+        if (attractionTimer <= 0)
+        {
+            Rigidbody.velocity = Vector3.zero;
+            transform.position = Vector3.SmoothDamp(transform.position, target.position, ref smoothDampVelocity, AttractionTime);
+        }
     }
 
     void OnCollisionEnter (Collision other)
     {
-        Player player = other.gameObject.GetComponent<Player>();
-        player?.Resources.AddOneOfType(resourceType);
+        other.gameObject.GetComponent<Player>()?.Resources.AddOneOfType(resourceType);
         Destroy(gameObject);
     }
 }

@@ -12,4 +12,12 @@ game menuing
 	main menu
 	pause menu
 
+flight balancing
+	change numbers so that you should only tap neutrinos every 3-4 planets you mine
+	move mothership outside/on edge of planet field so that you have to keep return journey fuel in mind
+
 speed/cruise control UI
+
+visual polish ideas
+	starry skybox
+	particle effect thrusters (6 separate particle systems that play based on input)

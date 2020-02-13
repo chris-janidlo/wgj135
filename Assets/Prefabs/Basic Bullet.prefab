@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5920969629768825929}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.16, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,7 +99,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4e57aeda264146feb8164e3d755bbb3, type: 2}
+  - {fileID: 2100000, guid: 408dd79cc100945a0841ca6ddbba5b62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -129,7 +129,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.1
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -211,7 +211,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e4e57aeda264146feb8164e3d755bbb3, type: 2}
+  - {fileID: 2100000, guid: 408dd79cc100945a0841ca6ddbba5b62, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

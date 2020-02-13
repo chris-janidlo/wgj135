@@ -22,6 +22,8 @@ public class PlayerMovement : MonoBehaviour
     Vector3 translationalInput;
     Vector2 rotationalInput;
 
+    Vector3 oldVelocity;
+
     float knockbackTimer;
     bool cruiseControl;
 
@@ -82,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (knockbackTimer <= 0 && !cruiseControl)
         {
-            if (!decelerationTransition.IsTransitioningTo(Vector3.zero))
+            if (Rigidbody.velocity != Vector3.zero && !decelerationTransition.IsTransitioningTo(Vector3.zero))
             {
                 float maxThrust = Mathf.Max(Thrust.x, Mathf.Max(Thrust.y, Thrust.z));
                 // assuming the player took the fastest route to get to the current speed, this means that it takes exactly as many seconds to slow down as it did to speed up
@@ -100,7 +102,9 @@ public class PlayerMovement : MonoBehaviour
         if (currentSpeed > MaxSpeed)
             Rigidbody.velocity = Rigidbody.velocity.normalized * MaxSpeed;
 
-        if (Rigidbody.velocity != Vector3.zero)
+        if (decelerationTransition.IsTransitioningTo(Vector3.zero) || (translationalInput != Vector3.zero && Rigidbody.velocity != oldVelocity))
             Player.Instance.Resources.Heat -= ThrustHeatCostPerSecond * Time.deltaTime;
+
+        oldVelocity = Rigidbody.velocity;
     }
 }

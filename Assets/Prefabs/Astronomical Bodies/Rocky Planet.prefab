@@ -54,7 +54,7 @@ MonoBehaviour:
     Hydrogen: 0
     Methane: 10
     Silicon: 60
-  ParticleExplosiveForceRange: {x: 5, y: 8}
+  ParticleExplosiveForceRange: {x: 30, y: 50}
   Health: {fileID: 817576950358478325}
   ParticlePrefab: {fileID: 2089067391280947251, guid: e4ec58b072342487ba5f1a2ae6e4fbce,
     type: 3}
@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644cb3686241049b5b484a562162369e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _value: 15
+  _value: 5
 --- !u!114 &121385109881433351
 MonoBehaviour:
   m_ObjectHideFlags: 0
