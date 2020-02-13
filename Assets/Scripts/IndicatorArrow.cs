@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,7 +8,8 @@ public class IndicatorArrow : MonoBehaviour
 {
     public static bool ShowArrows = true;
 
-    public int DistanceFromTarget => (int) Vector3.Distance(targetVisual.position, Player.Instance.transform.position);
+    // FIXME: null check here is bandaid for race condition when target visual is destroyed but this isn't destroyed yet, and factory is currently trying to sort this arrow
+    public int DistanceFromTarget => (int) Vector3.Distance(targetVisual?.position ?? Vector3.zero, Player.Instance.transform.position);
 
     public Vector2 TextOffset;
     public Vector2Int CanvasDimensions;
