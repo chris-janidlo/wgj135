@@ -8,6 +8,8 @@ using crass;
 // astronomical body factory
 public class PillarOfCreation : MonoBehaviour
 {
+    const int SPAWN_TRIES_PER_PLANET = 37;
+
     // please don't modify the internal values of this from anywhere except this class :)))
     public ResourceBag Goals { get; private set; }
 
@@ -20,19 +22,45 @@ public class PillarOfCreation : MonoBehaviour
 
     void Start ()
     {
-        List<AstronomicalBody> prefabs = getPrefabsToSpawn();
-        List<Vector3> unitSphereDistribution = fibonacciSphere(prefabs.Count, true);
-        
-        for (int i = 0; i < prefabs.Count; i++)
+        List<AstronomicalBody> prefabs = getPrefabsToSpawn();        
+        List<AstronomicalBody> spawned = new List<AstronomicalBody>();
+
+        int attemptedSpawnConfigurations = 0;
+
+        while (spawned.Count < prefabs.Count && attemptedSpawnConfigurations < 1000)
         {
-            Vector3 point;
+            List<Vector3> unitSphereDistribution = fibonacciSphere(prefabs.Count, true);
 
-            do
+            for (int i = 0; i < prefabs.Count; i++)
             {
-                point = transform.position + unitSphereDistribution[i] * RandomExtra.Range(DistanceFromSpawnRange);
-            } while (Physics.CheckSphere(point, prefabs[i].MinDistanceFromOtherColliders));
+                Vector3 point;
+                int tryCount = 0;
 
-            Instantiate(prefabs[i], point, UnityEngine.Random.rotation);
+                do
+                {
+                    point = transform.position + unitSphereDistribution[i] * RandomExtra.Range(DistanceFromSpawnRange);
+                    tryCount++;
+                } while (Physics.CheckSphere(point, prefabs[i].MinDistanceFromOtherColliders) && tryCount < SPAWN_TRIES_PER_PLANET);
+
+                if (tryCount >= SPAWN_TRIES_PER_PLANET)
+                {
+                    foreach (AstronomicalBody spawn in spawned)
+                        DestroyImmediate(spawn.gameObject);
+
+                    spawned = new List<AstronomicalBody>();
+                    attemptedSpawnConfigurations++;
+                    break;
+                }
+
+                spawned.Add(Instantiate(prefabs[i], point, UnityEngine.Random.rotation));
+            }
+        }
+
+        Debug.Log(attemptedSpawnConfigurations);
+
+        if (attemptedSpawnConfigurations >= 1000)
+        {
+            throw new Exception("couldn't find a working configuration in a reasonable amount of time");
         }
 
         Goals = getGoals(prefabs);

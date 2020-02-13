@@ -806,7 +806,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExtraBodiesToSpawnRange: {x: 12, y: 16}
-  DistanceFromSpawnRange: {x: 0, y: 6000}
+  DistanceFromSpawnRange: {x: 0, y: 2000}
   GuaranteedBodyPrefabs:
     Items:
     - {fileID: 1889405632089722533, guid: f149072e427764efd9b8e4ba1f0574e7, type: 3}
@@ -835,7 +835,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 138630529}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6000}
+  m_LocalPosition: {x: 0, y: 0, z: 800}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

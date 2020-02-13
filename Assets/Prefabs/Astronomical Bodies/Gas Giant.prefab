@@ -48,11 +48,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84747cfd4e10459585076fe020931ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDistanceFromOtherColliders: 500
+  MinDistanceFromOtherColliders: 1000
   ResourceProfile:
     Heat: 10
-    Hydrogen: 50
-    Methane: 10
+    Hydrogen: 90
+    Methane: 30
     Silicon: 0
   ParticleExplosiveForceRange: {x: 30, y: 50}
   Health: {fileID: 817576950358478325}

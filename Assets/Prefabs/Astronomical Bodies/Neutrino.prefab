@@ -48,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f84747cfd4e10459585076fe020931ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinDistanceFromOtherColliders: 500
+  MinDistanceFromOtherColliders: 1000
   ResourceProfile:
     Heat: 100
     Hydrogen: 10
