@@ -107,8 +107,8 @@ InputManager:
     descriptiveNegativeName: 
     negativeButton: left shift
     positiveButton: space
-    altNegativeButton: 
-    altPositiveButton: 
+    altNegativeButton: q
+    altPositiveButton: e
     gravity: 3
     dead: 0.001
     sensitivity: 3
@@ -186,7 +186,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: ;
+    positiveButton: f
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -217,8 +217,8 @@ InputManager:
     m_Name: Pitch
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: i
-    positiveButton: k
+    negativeButton: up
+    positiveButton: down
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -233,8 +233,8 @@ InputManager:
     m_Name: Yaw
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: j
-    positiveButton: l
+    negativeButton: left
+    positiveButton: right
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
@@ -250,7 +250,7 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
-    positiveButton: m
+    positiveButton: c
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3
