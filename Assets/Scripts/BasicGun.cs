@@ -7,18 +7,11 @@ public class BasicGun : MonoBehaviour
     public BasicBullet BulletPrefab;
 
     public float FiringForceMagnitude, HeatPerShot, TimePerShot;
-    public string FireButton, SwitchDirectionButton;
+    public string FireButton;
 
     void Start ()
     {
         StartCoroutine(shootine());
-    }
-
-    void Update ()
-    {
-        bool shouldSwitch = Input.GetButton(SwitchDirectionButton);
-
-        transform.localEulerAngles = new Vector3(0, shouldSwitch ? 180 : 0, 0);
     }
 
     IEnumerator shootine ()
