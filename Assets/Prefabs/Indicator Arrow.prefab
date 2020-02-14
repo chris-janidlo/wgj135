@@ -319,14 +319,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a50a8dad8983741b6a2f408bcfb6c8c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TextOffset: {x: 40, y: 30}
-  CanvasDimensions: {x: 256, y: 240}
+  TextOffset: {x: 80, y: 60}
+  CanvasDimensions: {x: 512, y: 480}
   TextParent: {fileID: 4234986390335357616}
   FillText: {fileID: 4234986390266869943}
   LabelText: {fileID: 4234986390723864012}
   Arrow: {fileID: 4234986390141355473}
   OverallGroup: {fileID: 4733072684758630976}
-  targetVisual: {fileID: 0}
 --- !u!225 &4733072684758630976
 CanvasGroup:
   m_ObjectHideFlags: 0
