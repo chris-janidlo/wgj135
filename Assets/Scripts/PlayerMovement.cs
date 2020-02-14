@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
 
     public string MovementAxisX, MovementAxisY, MovementAxisZ, PitchAxis, YawAxis;
 
+    public AnimationCurve TranslationalInputMagnitudeToThrusterVolume, RotationalInputMagnitudeToThrusterVolume;
+    public AudioSource ThrusterSource;
+
     [SerializeField]
     Rigidbody Rigidbody;
     
@@ -102,5 +105,9 @@ public class PlayerMovement : MonoBehaviour
 
         float scaledThrustHeatCost = MaxThrustHeatCostPerSecond * currentSpeed / MaxSpeed;
         Player.Instance.Resources.Heat -= scaledThrustHeatCost * Time.deltaTime;
+
+        ThrusterSource.volume =
+            TranslationalInputMagnitudeToThrusterVolume.Evaluate(translationalInput.magnitude) +
+            RotationalInputMagnitudeToThrusterVolume.Evaluate(rotationalInput.magnitude);
     }
 }

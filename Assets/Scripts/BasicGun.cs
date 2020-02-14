@@ -9,6 +9,8 @@ public class BasicGun : MonoBehaviour
     public float FiringForceMagnitude, HeatPerShot, TimePerShot;
     public string FireButton;
 
+    public AudioSource FireSource;
+
     void Start ()
     {
         StartCoroutine(shootine());
@@ -28,6 +30,8 @@ public class BasicGun : MonoBehaviour
                 Player.Instance.Movement.Knockback(-firingForce);
 
                 Player.Instance.Resources.Heat -= HeatPerShot;
+
+                FireSource.Play();
 
                 yield return new WaitForSeconds(TimePerShot);
             }

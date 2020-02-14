@@ -18,11 +18,21 @@ public class Player : Singleton<Player>
 
     public PlayerMovement Movement;
 
+    public float PickupSoundRepeatTime;
+    public int MaxPickupSoundRepeats;
+    public AudioSource PickupSource;
+
     IEnumerator deathEnum;
+    int pickupSoundsToPlay;
 
     void Awake ()
     {
         SingletonSetInstance(this, true);
+    }
+
+    void Start ()
+    {
+        StartCoroutine(pickupSoundRoutine());
     }
 
     void Update ()
@@ -44,6 +54,26 @@ public class Player : Singleton<Player>
         }
 
         Resources.Heat -= IdleLifeSupportDrainPerSecond * Time.deltaTime;
+    }
+
+    public void PlayPickupSound ()
+    {
+        pickupSoundsToPlay++;
+        if (pickupSoundsToPlay > MaxPickupSoundRepeats) pickupSoundsToPlay = MaxPickupSoundRepeats;
+    }
+
+    IEnumerator pickupSoundRoutine ()
+    {
+        while (true)
+        {
+            while (pickupSoundsToPlay > 0)
+            {
+                PickupSource.Play();
+                pickupSoundsToPlay--;
+                yield return new WaitForSeconds(PickupSoundRepeatTime);
+            }
+            yield return null;
+        }
     }
 
     IEnumerator deathRoutine ()

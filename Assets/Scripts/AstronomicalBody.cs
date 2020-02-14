@@ -33,5 +33,7 @@ public class AstronomicalBody : MonoBehaviour
                 particle.Rigidbody.AddForce(explosion, ForceMode.VelocityChange);
             }
         }
+
+        PlanetExplosionEffect.Instance.Play(transform.position);
     }
 }

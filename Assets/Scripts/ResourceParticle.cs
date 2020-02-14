@@ -39,7 +39,9 @@ public class ResourceParticle : MonoBehaviour
 
     void OnCollisionEnter (Collision other)
     {
-        other.gameObject.GetComponent<Player>()?.Resources.AddOneOfType(resourceType);
+        var player = other.gameObject.GetComponent<Player>();
+        player?.Resources.AddOneOfType(resourceType);
+        player?.PlayPickupSound();
         Destroy(gameObject);
     }
 }
